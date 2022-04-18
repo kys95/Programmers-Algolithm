@@ -1,56 +1,52 @@
 def solution(n, k, cmd):
     cur = k
-    table = {i: [i - 1, i + 1] for i in range(n)}
     answer = ['O'] * n
-    table[0] = [None, 1]
-    table[n - 1] = [n - 2, None]
-
+    origin = {i: [i - 1, i + 1] for i in range(n)}
+    origin[0][0] = None
+    origin[n - 1][1] = None
     stack = []
-    for c in cmd:
-        if c == "C":
-            # 삭제
+
+    for data in cmd:
+        if data == 'C':  # 현재 행 삭제
             answer[cur] = 'X'
-            prev, next = table[cur]
-            stack.append([prev, cur, next])
+            prev, next = origin[cur][0], origin[cur][1]
+            stack.append((prev, cur, next))
 
+            # 현재 행이 가장 마지막행일 경우
             if next == None:
-                cur = table[cur][0]
+                cur = origin[cur][0]
+                origin[cur][1] = None
 
             else:
-                cur = table[cur][1]
+                cur = origin[cur][1]
+                if prev == None:  # 현재 행이 가장 첫 행
+                    origin[cur][0] = None
+                else:
+                    origin[prev][1] = next
+                    origin[next][0] = prev
 
-            if prev == None:
-                table[next][0] = None
-
-            elif next == None:
-                table[prev][1] = None
-
-            else:
-                table[prev][1] = next
-                table[next][0] = prev
-
-        elif c == "Z":
-            # 복구
+        elif data == 'Z':  # 최근 삭제된 행 복구
             prev, now, next = stack.pop()
             answer[now] = 'O'
+
             if prev == None:
-                table[next][0] = now
+                origin[next][0] = now
             elif next == None:
-                table[prev][1] = now
+                origin[prev][1] = now
             else:
-                table[next][0] = now
-                table[prev][1] = now
+                origin[prev][1] = now
+                origin[next][0] = now
 
         else:
-            # 커서 이동
-            c1, c2 = c.split(' ')
-            c2 = int(c2)
+            a, b = data.split()
+            b = int(b)
 
-            if c1 == 'D':
-                for _ in range(c2):
-                    cur = table[cur][1]
+            if a == 'U':  # 위
+                for _ in range(b):
+                    cur = origin[cur][0]
+
             else:
-                for _ in range(c2):
-                    cur = table[cur][0]
+                for _ in range(b):
+                    cur = origin[cur][1]
 
     return ''.join(answer)

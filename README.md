@@ -7,6 +7,8 @@
 
 # Contents
 
+\* [2018 KAKAO BLIND RECRUITMENT](https://github.com/kys95/Programmers-Algolithm/tree/main/2018_KAKAO_BLIND_RECRUITMENT)
+
 \* [2019 KAKAO BLIND RECRUITMENT](https://github.com/kys95/Programmers-Algolithm/tree/main/2019_KAKAO_BLIND_RECRUITMENT)
 
 \* [2020 KAKAO BLIND RECRUITMENT](https://github.com/kys95/Programmers-Algolithm/tree/main/2020_KAKAO_BLIND_RECRUITMENT)

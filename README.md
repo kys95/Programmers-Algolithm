@@ -11,6 +11,8 @@
 
 \* [2019 KAKAO BLIND RECRUITMENT](https://github.com/kys95/Programmers-Algolithm/tree/main/2019_KAKAO_BLIND_RECRUITMENT)
 
+\* [2019 카카오 개발자 겨울 인턴십](https://github.com/kys95/Programmers-Algolithm/tree/main/2019_%EC%B9%B4%EC%B9%B4%EC%98%A4_%EA%B0%9C%EB%B0%9C%EC%9E%90_%EA%B2%A8%EC%9C%A8_%EC%9D%B8%ED%84%B4%EC%8B%AD)
+
 \* [2020 KAKAO BLIND RECRUITMENT](https://github.com/kys95/Programmers-Algolithm/tree/main/2020_KAKAO_BLIND_RECRUITMENT)
 
 \* [코딩테스트 고득점 Kit](https://github.com/kys95/Programmers-Algolithm/tree/main/%EA%B3%A0%EB%93%9D%EC%A0%90Kit)

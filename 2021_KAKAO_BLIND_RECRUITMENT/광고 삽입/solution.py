@@ -38,3 +38,8 @@ def solution(play_time, adv_time, logs):
             answer = i - str2int(adv_time) + 1
 
     return int2str(answer)
+
+# 1. dp문제로 풀기위해 문자열을 초 단위로 모두 변경 - str2int 함수
+# 2. log를 start, end지점으로 분리후 start지점은 +1, end지점은 -1로 표시
+# 3. start~end지점 값 표시, 누적값 확인
+# 4. for문을 돌리면서 광고시간의 누적 시청자수가 높은 시간대를 찾아낸다.

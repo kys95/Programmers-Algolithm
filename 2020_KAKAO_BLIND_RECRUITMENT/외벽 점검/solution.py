@@ -22,3 +22,6 @@ def solution(n, weak, dist):
                     break
 
     return min(cand) if cand else -1
+
+# 1. 선형형태로 weak 변형
+# 2. permutation을 사용하여 친구들 차례로 벽에 위치 시킨 후 조건 만족시 cand에 추가

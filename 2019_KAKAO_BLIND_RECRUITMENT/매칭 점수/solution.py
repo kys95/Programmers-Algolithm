@@ -42,3 +42,7 @@ def solution(word, pages):
             result = i
 
     return result
+
+# 1. 페이지 내에서 웹페이지의 url 찾기 -> url = re.search('<meta property="og:url" content="(\S+)"', page).group(1)
+# 2. 페이지 내에서 모든 외부 링크 찾기 -> exiosLink = re.findall('<a href="(https://[\S]*)"', page)
+# 3. 페이지 내에서 모든 검색어 찾기 -> cnt = re.sub('[^a-zA-Z]', ' ', k).lower().split().count(word.lower())

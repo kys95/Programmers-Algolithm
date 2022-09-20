@@ -1,0 +1,77 @@
+from collections import defaultdict, deque
+from itertools import permutations
+from copy import deepcopy
+
+
+def ctrl_move(new_board, r, c, k, t):
+    cr, cc = r, c
+    while True:
+        nr = cr + k
+        nc = cc + t
+        if not (0 <= nr < 4 and 0 <= nc < 4):
+            return cr, cc
+        if new_board[nr][nc] != 0:
+            return nr, nc
+        cr = nr
+        cc = nc
+
+
+def bfs(new_board, start, end):
+    r, c = start
+    find_r, find_c = end
+    queue = deque()
+    queue.append((r, c, 0))
+    visited = [[0] * 4 for _ in range(4)]
+    move = [(0, -1), (0, 1), (-1, 0), (1, 0)]
+    while queue:
+        r, c, temp = queue.popleft()
+        if visited[r][c]: continue
+        visited[r][c] = 1
+        if r == find_r and c == find_c:
+            return temp
+        for k, t in move:
+            cr = k + r
+            cc = c + t
+            if 0 <= cr < 4 and 0 <= cc < 4:
+                queue.append((cr, cc, temp + 1))
+            cr, cc = ctrl_move(new_board, r, c, k, t)
+            queue.append((cr, cc, temp + 1))
+    return -1
+
+
+INF = int(1e9)
+
+
+def solution(board, r, c):
+    answer = INF
+    location = defaultdict(list)
+    nums = []
+    for i in range(4):
+        for j in range(4):
+            if board[i][j] != 0:
+                if board[i][j] not in nums: nums.append(board[i][j])
+                location[board[i][j]].append((i, j))
+
+    for choices in list(permutations(nums, len(nums))):
+        new_board = deepcopy(board)
+        cnt = 0
+        nr, nc = r, c
+        for choice in choices:
+            left = bfs(new_board, (nr, nc), location[choice][0])
+            right = bfs(new_board, (nr, nc), location[choice][1])
+
+            if left < right:
+                cnt += left
+                cnt += bfs(new_board, location[choice][0], location[choice][1])
+                nr, nc = location[choice][1]
+            else:
+                cnt += right
+                cnt += bfs(new_board, location[choice][1], location[choice][0])
+                nr, nc = location[choice][0]
+
+            new_board[location[choice][0][0]][location[choice][0][1]] = 0  # 카드 지우기
+            new_board[location[choice][1][0]][location[choice][1][1]] = 0  # 카드 지우기
+            cnt += 2  # enter
+        answer = min(answer, cnt)
+
+    return answer

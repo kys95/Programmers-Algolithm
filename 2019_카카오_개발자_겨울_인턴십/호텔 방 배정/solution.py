@@ -14,3 +14,6 @@ def find_emptyroom(chk, rooms): # 재귀함수
     empty = find_emptyroom(rooms[chk], rooms) # 재귀함수 호출
     rooms[chk] = empty+1 # (배정된 방+1)을 부모노드로 변경
     return empty # 새로 찾은 빈 방
+
+# 1. 순차적으로 빈방을 탐색하는 것이 아니라 바로 다음 빈방을 찾을 수 있어야한다.
+# 2. 방이 배정되면 부모노드를 업데이트 시킨다.

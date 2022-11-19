@@ -19,5 +19,4 @@ def solution(number, limit, power):
             answer += result
         else:
             answer += power
-
     return answer

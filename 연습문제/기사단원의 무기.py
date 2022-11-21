@@ -1,5 +1,4 @@
 import math
-
 def getNum(n):
     cnt = 0
     for i in range(1, int(math.sqrt(n)) + 1):
@@ -11,7 +10,6 @@ def getNum(n):
 
 def solution(number, limit, power):
     answer = 0
-
     for i in range(1, number + 1):
         result = getNum(i)
 

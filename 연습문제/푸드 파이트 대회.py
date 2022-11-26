@@ -1,6 +1,4 @@
 from itertools import chain
-
-
 def solution(food):
     stack = []
 

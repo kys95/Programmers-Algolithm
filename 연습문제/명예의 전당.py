@@ -1,6 +1,7 @@
 def solution(k, score):
     result = []
     honor = []
+
     for i in range(len(score)):
         if i > k-1:
             if score[i] > honor[0]:
@@ -10,4 +11,5 @@ def solution(k, score):
             honor.append(score[i])
         honor.sort()
         result.append(honor[0])
+
     return result

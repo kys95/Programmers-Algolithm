@@ -21,7 +21,6 @@ answer = 0
 N = 0
 visited = []
 
-
 def dfs(k, cnt, dungeons):
     global answer
     if cnt > answer:
